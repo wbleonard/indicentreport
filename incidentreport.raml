@@ -1,0 +1,99 @@
+#%RAML 0.8
+title: Incident Report
+version: 1.0
+baseUri: /mobile/custom/IncidentReport
+protocols: [HTTPS]
+/indicents:
+  displayName: Incidents
+  description: |
+    All incident reports
+    
+  get:
+    protocols: [HTTPS]
+    queryParameters:
+      technician:
+        displayName: Technician ID
+        type: string
+      location:
+        displayName: Location
+        description: |
+          location of contact or technician
+          
+        type: string
+        example: |
+          39.355589 -120.652492
+          
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "items":
+              	 [
+              	   {
+              		 "id": 100,
+              		 "title": "Leaking Water Heater",
+              		 "createdon": "2014-07-18 17:21:55 PST",
+              		 "contact": {
+              			 "name": "Lynn Adams",
+              			 "street": "45 O'Connor Street",
+              			 "city": "Ottawa",
+              			 "postalcode": "a1a1a1",
+              			"username": "johnbeta"
+              		 },
+              		 "status" : "New",
+              		 "priority" : "High",
+              		 "driveTime" : 30,
+              		 "imageLink": "storage/collections/2e029813-d1a9-4957-a69a-fbd0d7431d77/objects/6cdaa3a8-097e-49f7-9bd2-88966c45668f?user=lynn1014"
+              	   },
+              	  {
+              		 "id": 101,
+              		 "title": "Smoking Oven",
+              		 "createdon": "2014-07-18 17:21:55 PST",
+              		 "contact": {
+              			 "name": "Lynn Adams",
+              			 "street": "45 O'Connor Street",
+              			 "city": "Ottawa",
+              			 "postalcode": "a1a1a1",
+              			 "username": "johnbeta"
+              		 },
+              		 "status" : "In Progress",
+              		 "priority" : "Medium",
+              		 "driveTime" : 10,
+              		 "imageLink": "storage/collections/2e029813-d1a9-4957-a69a-fbd0d7431d77/objects/6cdaa3a8-097e-49f7-9bd2-88966c45668f?user=lynn1014"
+              	   }
+              	 ],
+                 "uris":
+              	 [
+              		"/mobile/custom/incidentreport/incidents/100",
+              		 "/mobile/custom/incidentreport/incidents/101"
+              	  ],
+              	"etags":
+              	  [
+              		  "100",
+              		  "101"
+              	  ]
+              }
+              
+      404:
+  post:
+    protocols: [HTTPS]
+    body:
+      application/json:
+        example: |
+          { 
+            "id": 100, 
+            "title": "Leaking Water Heater", 
+            "createdon": "2014-07-18 17:21:55 PST", 
+            "contact": [ { "email": "lynn.smith@a.com", "name": "Lynn Smith", "street": "555 America Way", "city": "Austin", "postalcode" : "78731" } ],
+            "status" : "New",
+            "priority" : "High",
+            "driveTime" : 30,
+            "imageLink": "/mobile/platform/storage/1.0/collections/Foo/objects/FD37E8D4A7152B4EE0435D329C0AFFD0?type=guid" 
+          }
+          
+    responses:
+      201:
+        body:
+          application/json:

@@ -1,0 +1,12 @@
+{
+  "name" : "incidentreport",
+  "version" : "1.0",
+  "description" : "Customer API for Getting Started tutorial",
+  "main" : "incidentreport.js",
+  "oracleMobile" : {
+    "dependencies" : {
+      "apis" : { },
+      "connectors" : { }
+    }
+  }
+}

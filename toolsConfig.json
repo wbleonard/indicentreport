@@ -1,0 +1,51 @@
+
+{
+    "apiName":"IncidentReport",
+    "apiVersion":"1.0",
+    "apiId":"4d9a242c-229f-4ea7-9070-f9aa7b144856",
+    "baseUrl":"http://<MCS_SERVER>:<MCS_PORT>/",
+    "authorization":{
+        "mobileBackendID":"<YOUR_MOBILE_BACKEND_ID>",
+        "anonymousKey":"<MBE_ANONYMOUS_KEY>",
+        "oauth":{
+            "tokenEndpoint":"<MBE_OAUTH_TOKEN_ENDPOINT>",
+            "clientId":"<MBE_OAUTH_CLIENT_ID>",
+            "clientSecret":"<MBE_OAUTH_CLIENT_ID>"
+        }
+    },
+    "container":{
+        "oracleMobileApiName":"OracleMobileAPI",
+        "port":4000
+    },
+    "deploy":{
+        "tempDirectory":"/tmp/mcs-deploy"
+    },
+    "tests":{
+        "postIndicents":{
+            "method":"POST",
+            "resource":"/indicents",
+            "payload":{
+                "id":100,
+                "title":"Leaking Water Heater",
+                "createdon":"2014-07-18 17:21:55 PST",
+                "contact":[
+                    {
+                        "email":"lynn.smith@a.com",
+                        "name":"Lynn Smith",
+                        "street":"555 America Way",
+                        "city":"Austin",
+                        "postalcode":"78731"
+                    }
+                ],
+                "status":"New",
+                "priority":"High",
+                "driveTime":30,
+                "imageLink":"/mobile/platform/storage/1.0/collections/Foo/objects/FD37E8D4A7152B4EE0435D329C0AFFD0?type=guid"
+            }
+        },
+        "getIndicents":{
+            "method":"GET",
+            "resource":"/indicents"
+        }
+    }
+}
